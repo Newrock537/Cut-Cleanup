@@ -1,593 +1,74 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-  <meta charset="UTF-8" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>Andy • Michigan</title>
-
-  <style>
-
-    :root {
-
-      --primary: #0066cc;
-
-      --dark: #0f172a;
-
-      --light: #f8fafc;
-
-      --gray: #64748b;
-
-    }
-
-
-
-    * {
-
-      margin: 0;
-
-      padding: 0;
-
-      box-sizing: border-box;
-
-    }
-
-
-
-    body {
-
-      font-family: system-ui, -apple-system, sans-serif;
-
-      background: var(--light);
-
-      color: var(--dark);
-
-      line-height: 1.6;
-
-    }
-
-
-
-    header {
-
-      position: fixed;
-
-      top: 0;
-
-      width: 100%;
-
-      background: rgba(255,255,255,0.92);
-
-      backdrop-filter: blur(10px);
-
-      border-bottom: 1px solid #e2e8f0;
-
-      z-index: 1000;
-
-      transition: all 0.3s;
-
-    }
-
-
-
-    nav {
-
-      max-width: 1200px;
-
-      margin: 0 auto;
-
-      padding: 1rem 2rem;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-    }
-
-
-
-    .logo {
-
-      font-size: 1.4rem;
-
-      font-weight: 800;
-
-      color: var(--primary);
-
-    }
-
-
-
-    .nav-links {
-
-      display: flex;
-
-      gap: 2.5rem;
-
-      list-style: none;
-
-    }
-
-
-
-    .nav-links a {
-
-      color: var(--dark);
-
-      text-decoration: none;
-
-      font-weight: 500;
-
-      transition: color 0.3s;
-
-    }
-
-
-
-    .nav-links a:hover {
-
-      color: var(--primary);
-
-    }
-
-
-
-    /* Mobile menu toggle */
-
-    .menu-toggle {
-
-      display: none;
-
-      font-size: 1.8rem;
-
-      cursor: pointer;
-
-    }
-
-
-
-    main {
-
-      padding-top: 90px;
-
-    }
-
-
-
-    section {
-
-      min-height: 100vh;
-
-      padding: 8rem 2rem 4rem;
-
-      max-width: 1100px;
-
-      margin: 0 auto;
-
-    }
-
-
-
-    #hero {
-
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-
-      color: white;
-
-      text-align: center;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-
-      align-items: center;
-
-      min-height: 90vh;
-
-      padding: 0 1rem;
-
-    }
-
-
-
-    #hero h1 {
-
-      font-size: clamp(3rem, 8vw, 6.5rem);
-
-      margin-bottom: 1.5rem;
-
-      line-height: 0.95;
-
-    }
-
-
-
-    #hero p {
-
-      font-size: 1.4rem;
-
-      max-width: 600px;
-
-      margin-bottom: 2.5rem;
-
-      opacity: 0.95;
-
-    }
-
-
-
-    .btn {
-
-      background: white;
-
-      color: var(--primary);
-
-      padding: 1rem 2.2rem;
-
-      border-radius: 50px;
-
-      text-decoration: none;
-
-      font-weight: 600;
-
-      font-size: 1.1rem;
-
-      transition: all 0.3s;
-
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-
-    }
-
-
-
-    .btn:hover {
-
-      transform: translateY(-4px);
-
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-
-    }
-
-
-
-    h2 {
-
-      font-size: 3rem;
-
-      margin-bottom: 2.5rem;
-
-      text-align: center;
-
-      color: var(--primary);
-
-    }
-
-
-
-    .grid {
-
-      display: grid;
-
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-
-      gap: 2.5rem;
-
-    }
-
-
-
-    .card {
-
-      background: white;
-
-      border-radius: 16px;
-
-      overflow: hidden;
-
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-
-      transition: transform 0.4s;
-
-    }
-
-
-
-    .card:hover {
-
-      transform: translateY(-12px);
-
-    }
-
-
-
-    .card img {
-
-      width: 100%;
-
-      height: 220px;
-
-      object-fit: cover;
-
-    }
-
-
-
-    .card-content {
-
-      padding: 1.8rem;
-
-    }
-
-
-
-    footer {
-
-      background: var(--dark);
-
-      color: white;
-
-      text-align: center;
-
-      padding: 4rem 2rem 2rem;
-
-    }
-
-
-
-    @media (max-width: 768px) {
-
-      .nav-links {
-
-        display: none;
-
-        position: absolute;
-
-        top: 100%;
-
-        left: 0;
-
-        right: 0;
-
-        background: white;
-
-        flex-direction: column;
-
-        padding: 2rem;
-
-        border-top: 1px solid #e2e8f0;
-
-      }
-
-
-
-      .nav-links.active {
-
-        display: flex;
-
-      }
-
-
-
-      .menu-toggle {
-
-        display: block;
-
-      }
-
-
-
-      #hero h1 {
-
-        font-size: 3.8rem;
-
-      }
-
-    }
-
-  </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut&Cleanup Landscaping</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #2e7d32;
+        }
+        .contact {
+            background-color: #e8f5e9;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #2e7d32;
+            color: white;
+        }
+    </style>
 </head>
-
 <body>
 
-
-
-  <header>
-
-    <nav>
-
-      <div class="logo">Andy</div>
-
-      <ul class="nav-links">
-
-        <li><a href="#hero">Home</a></li>
-
-        <li><a href="#about">About</a></li>
-
-        <li><a href="#projects">Projects</a></li>
-
-        <li><a href="#contact">Contact</a></li>
-
-      </ul>
-
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-    </nav>
-
-  </header>
-
-
-
-  <main>
-
-    <section id="hero">
-
-      <h1>Hello, I'm Andy</h1>
-
-      <p>From Fowlerville, Michigan • Building things, solving problems, enjoying life one project at a time.</p>
-
-      <a href="#about" class="btn">Learn More ↓</a>
-
-    </section>
-
-
-
-    <section id="about">
-
-      <h2>About Me</h2>
-
-      <p style="max-width:700px; margin:0 auto 3rem; font-size:1.2rem; text-align:center;">
-
-        I'm a [your profession/hobby — e.g. web enthusiast / gamer / mechanic / dad / whatever fits you].<br>
-
-        I like [coffee / hiking / coding late / watching sunsets over Michigan fields / insert your thing].<br><br>
-
-        Currently located in Fowlerville — always up for a good conversation or collaboration.
-
-      </p>
-
-    </section>
-
-
-
-    <section id="projects" style="background:#f1f5f9;">
-
-      <h2>Some Things I've Worked On</h2>
-
-      <div class="grid">
-
-        <div class="card">
-
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800" alt="code">
-
-          <div class="card-content">
-
-            <h3>Project One</h3>
-
-            <p>A cool thing I built with HTML, CSS & JS. (Replace this image/text with your real work!)</p>
-
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" alt="laptop">
-
-          <div class="card-content">
-
-            <h3>Project Two</h3>
-
-            <p>Another interesting creation. Feel free to customize or remove these cards.</p>
-
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <img src="https://images.unsplash.com/photo-1516321310764-9f3c9619d7d7?w=800" alt="design">
-
-          <div class="card-content">
-
-            <h3>Project Three</h3>
-
-            <p>Something I'm proud of. Add your own screenshots or photos here.</p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <section id="contact">
-
-      <h2>Get in Touch</h2>
-
-      <p style="text-align:center; font-size:1.3rem; margin-bottom:3rem;">
-
-        Email: andy@example.com<br>
-
-        X/Twitter: @yourhandle<br>
-
-        Or just say hi below ↓
-
-      </p>
-
-      <!-- You can later add a real form with Formspree/Formcarry/etc -->
-
-      <form style="max-width:500px; margin:0 auto;">
-
-        <input type="text" placeholder="Your Name" style="width:100%; padding:1rem; margin-bottom:1rem; border-radius:8px; border:1px solid #cbd5e1;">
-
-        <input type="email" placeholder="Your Email" style="width:100%; padding:1rem; margin-bottom:1rem; border-radius:8px; border:1px solid #cbd5e1;">
-
-        <textarea placeholder="Message..." rows="5" style="width:100%; padding:1rem; margin-bottom:1.5rem; border-radius:8px; border:1px solid #cbd5e1;"></textarea>
-
-        <button type="submit" class="btn" style="width:100%; border:none; cursor:pointer;">Send Message</button>
-
-      </form>
-
-    </section>
-
-  </main>
-
-
-
-  <footer>
-
-    <p>© 2026 Andy • Made with ❤️ in Michigan</p>
-
-  </footer>
-
-
-
-  <script>
-
-    function toggleMenu() {
-
-      document.querySelector('.nav-links').classList.toggle('active');
-
-    }
-
-
-
-    // Smooth scroll for anchor links
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-      anchor.addEventListener('click', function(e) {
-
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-
-          behavior: 'smooth'
-
-        });
-
-        // Close mobile menu after click
-
-        document.querySelector('.nav-links').classList.remove('active');
-
-      });
-
-    });
-
-  </script>
+<header>
+    <h1>Cut&Cleanup</h1>
+    <p>Professional Landscaping & Yard Services</p>
+</header>
+
+<section>
+    <h2>About Us</h2>
+    <p>Cut&Cleanup is a reliable landscaping business focused on making your yard look clean, sharp, and well maintained. We take pride in quality work and making sure our customers are satisfied.</p>
+</section>
+
+<section>
+    <h2>Our Services</h2>
+    <ul>
+        <li>Gutter Cleaning</li>
+        <li>Power Washing (Driveways and Houses)</li>
+        <li>Mulching</li>
+        <li>Fall and Spring Cleanup</li>
+        <li>Flower Bed Remodeling</li>
+        <li>Tree and Bush Trimming or Removal</li>
+    </ul>
+</section>
+
+<section class="contact">
+    <h2>Contact Us</h2>
+    <p>Phone: 517-302-6854</p>
+    <p>Email: owenarockwell@gmail.com</p>
+</section>
+
+<footer>
+    <p>© 2026 Cut&Cleanup Landscaping</p>
+</footer>
 
 </body>
-
 </html>
